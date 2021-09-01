@@ -1,0 +1,14 @@
+name: MeiliSearch
+
+on: push
+
+jobs:
+  download_latest:
+    name: Download MeiliSearch latest
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |  # In the case it fails:
+        curl -L https://install.meilisearch.com | sh # downloading MS with the script
+        ls -la .  # the meilisearch binary is here
+        head -1 meilisearch # the binary file contains "Not Found"
